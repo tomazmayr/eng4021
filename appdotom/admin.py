@@ -7,4 +7,4 @@ from .models import Estadio
 admin.site.register(Jogadores)
 admin.site.register(Times)
 admin.site.register(Estadio)
-
+#registra os modelos criados anteriormente
