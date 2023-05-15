@@ -3,9 +3,11 @@ from django.shortcuts import render
 from .models import Jogadores, Estadio, Times
 
 def home(request):
+  #função que renderiza a home do site
   return render(request, "home.html")
 
 def list_futebol(request):
+  #função que lista as classes importadas do models.py e as atribui um nome e contexto. Retorna o HTML de atributos para que a task seja alterada
   jogadores = Jogadores.objects.all()
   estadio = Estadio.objects.all()
   times = Times.objects.all()
@@ -13,6 +15,7 @@ def list_futebol(request):
   return render(request, "atributos.html", context=context)
 
 def create_futebol(request):
+  #função para criar as tasks de uma das três classes listadas anteriormente e retorna o html com a lista das tarefas criadas
     if request.method == "POST":
         if "done" not in request.POST:
             done = False
@@ -28,6 +31,7 @@ def create_futebol(request):
 
 
 def update_futebol(request, task_id):
+  #Função que atualiza as tasks com nova descrição ou parâmetro dependendo da URL passada e depois retorna a lista das tasks criadas já alterada
     task = Task.objects.get(id=task_id)
     task.due_date = task.due_date.strftime('%Y-%m-%d')
 
@@ -46,6 +50,7 @@ def update_futebol(request, task_id):
 
 
 def delete_futebol(request, task_id):
+  #Função que dependendo da URL passada deleta uma ou mais tasks, depois retorna a html com a lista das tasks
     task = Task.objects.get(id=task_id)
     if request.method == "POST":
       if "confirm" in request.POST:
