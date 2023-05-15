@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .models import Jogadores, Estadio, Times
 
 def home(request):
-  #função que renderiza a home do site
+  #função que renderiza a home do site e retorna a html da pagina inicial
   return render(request, "home.html")
 
 def list_futebol(request):
